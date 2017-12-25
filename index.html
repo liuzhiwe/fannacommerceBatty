@@ -8,10 +8,13 @@
     <link rel="stylesheet/less" href="./less/demo.less"/>
     <link rel="stylesheet" href="./css/iconfont.css"/>
     <link rel="stylesheet" href="./css/swiper.min.css"/>
-    <script src="./lib/jquery/jquery.js"></script>
+    <script src="./lib/jquery/jquery-1.12.4.min.js"></script>
     <script src="lib/less/less.js"></script>
     <script src="./lib/template-web.js"></script>
     <script src="./js/swiper.min.js"></script>
+    <script src="./lib/template-web.js"></script>
+    <!--模版引擎-->
+
 </head>
 <body>
 <div id="wrap">
@@ -24,29 +27,42 @@
         <div class="swiper-container">
             <div class="swiper-wrapper">
                 <div class="swiper-slide"><img src="./images/img/slide_01_640x340.jpg" alt=""/></div>
-                <div class="swiper-slide"><img src="./images/img/slide_01_640x340.jpg" alt=""/></div>
-                <div class="swiper-slide"><img src="./images/img/slide_01_640x340.jpg" alt=""/></div>
             </div>
-            <!-- 濡傛灉闇�瑕佸垎椤靛櫒 -->
-            <div class="swiper-pagination"></div>
 
+            <div class="swiper-pagination"></div>
 
 
         </div>
     </div>
-    <!--tab鍒囨崲-->
+    <!-- 切换-->
     <div id="tab">
         <ul class="tabs clear">
-            <a  href="#"><li class="active">新增连载</li></a>
-            <a href="#"><li>新增完结</li></a>
-            <a href="#"><li>推荐连载</li></a>
-            <a href="#"><li>推荐完结</li></a>
+            <a href="#">
+                <li class="active">新增连载</li>
+            </a>
+            <a href="#">
+                <li>新增完结</li>
+            </a>
+            <a href="#">
+                <li>推荐连载</li>
+            </a>
+            <a href="#">
+                <li>推荐完结</li>
+            </a>
         </ul>
         <div class="tabx clear">
-            <a href="#"><img src="./images/images/detail01.jpg" alt=""/><p>标题</p></a>
-            <a href="#"><img src="./images/images/detail01.jpg" alt=""/><p>标题</p></a>
-            <a href="#"><img src="./images/images/detail01.jpg" alt=""/><p>标题</p></a>
-            <a href="#"><img src="./images/images/detail01.jpg" alt=""/><p>标题</p></a>
+            <a href="#"><img src="./images/images/detail01.jpg" alt=""/>
+
+                <p>标题</p></a>
+            <a href="#"><img src="./images/images/detail01.jpg" alt=""/>
+
+                <p>标题</p></a>
+            <a href="#"><img src="./images/images/detail01.jpg" alt=""/>
+
+                <p>标题</p></a>
+            <a href="#"><img src="./images/images/detail01.jpg" alt=""/>
+
+                <p>标题</p></a>
         </div>
     </div>
 </div>
@@ -59,10 +75,10 @@
             direction: 'horizontal',
             loop: true,
 
-            // 濡傛灉闇�瑕佸垎椤靛櫒
+
             pagination: '.swiper-pagination',
 
-            autoplay:2000,
+            autoplay: 2000,
             autoplayDisableOnInteraction: false,
         })
     }
@@ -70,16 +86,21 @@
 </script>
 
 </html>
+<script id=lunbo type="text/html">
+    <div class="swiper-slide"><img src="./images/img/slide_01_640x340.jpg" alt=""/></div>
+</script>
 
 <script>
-    $(function(){
+    $(function () {
+
         $.get({
-            url:"http://127.0.0.1:9091/api/getlunbo",
-            success:function(backdata){
-                console.log(backdata);
+            url: "http://127.0.0.1:9091/api/getlunbo",
+            success: function (backdata) {
+                for (var i = 0; i < backdata.length; i++) {
+                    $('.container').append(template('lunbo', clone));
+                }
             }
         })
-
-
     })
+
 </script>

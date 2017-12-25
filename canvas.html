@@ -132,6 +132,8 @@
             width: 100%;
         }
     </style>
+
+    <script src="./lib/jquery/jquery.js"></script>
 </head>
 <body>
 <div id="div">
@@ -194,5 +196,16 @@
 
     })
 
+
+
+
+    $(function(){
+        $.get({
+            url:"http://127.0.0.1:9091/api/getlunbo",
+            success:function(backdata){
+                console.log(backdata);
+            }
+        })
+    })
 
 </script>
